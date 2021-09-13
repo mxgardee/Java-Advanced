@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Primitive_Data_Types_02;
+package S03.CharAndBoolean;
 
 /**
  *
