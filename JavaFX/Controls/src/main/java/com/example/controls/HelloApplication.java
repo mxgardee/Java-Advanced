@@ -1,4 +1,4 @@
-package com.example.helloworldfx;
+package com.example.controls;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -14,7 +14,7 @@ public class HelloApplication extends Application {
     public void start(Stage primaryStage) throws IOException {
         Parent root = FXMLLoader.load(getClass().getResource("hello-view.fxml"));
         primaryStage.setTitle("Hello World");
-        primaryStage.setScene(new Scene(root, 500, 275));
+        primaryStage.setScene(new Scene(root, 800, 500));
         primaryStage.show();
     }
 
@@ -23,5 +23,3 @@ public class HelloApplication extends Application {
         launch(args);
     }
 }
-
-
