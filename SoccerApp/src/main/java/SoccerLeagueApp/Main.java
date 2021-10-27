@@ -7,10 +7,11 @@ package SoccerLeagueApp;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.Arrays;
+import java.util.Comparator;
 import java.util.Scanner;
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 public class Main {
 
@@ -21,7 +22,7 @@ public class Main {
         String match, team1, team2, score1, score2;
         int leagueTotal = 0;
         int position = 0;
-        HashMap<String, Integer> scoreboard = new HashMap<>();
+        TreeMap<String, Integer> scoreboard = new TreeMap<>();
 
         String[] sides, l1, l2;
         try {
@@ -32,7 +33,7 @@ public class Main {
 
         while (sc.hasNextLine()) {
 
-            Map<String, Integer> map = new HashMap<>();
+            Map<String, Integer> map = new TreeMap<>();
             leagueTotal = 0;
             match = sc.nextLine();
             sides = match.split(",");
@@ -64,14 +65,16 @@ public class Main {
             }
         }
 
-        for (String name : scoreboard.keySet()) {
-            String key = name;
-            String value = scoreboard.get(name).toString();
-            position++;
-            
-            System.out.println(position + ". " + key + " " + value);
+        LinkedHashMap<String, Integer> reverseSortedMap = new LinkedHashMap<>();
 
-        }
+        scoreboard.entrySet()
+                .stream()
+                .sorted(Map.Entry.comparingByValue(Comparator.reverseOrder()))
+//                .sorted(Map.Entry.comparingByKey())
+                .forEachOrdered(x -> reverseSortedMap.put(x.getKey(), x.getValue()));
+
+        System.out.println("Rankings: " + reverseSortedMap);
+        
 
     }
 }
